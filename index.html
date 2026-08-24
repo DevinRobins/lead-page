@@ -1,295 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- ============================================================
-     YOUR PAGE TITLE
-     This shows in the browser tab and in Google results.
-     ============================================================ -->
-<title>Work With Me | Your Name, Realtor</title>
-<meta name="description" content="Tell me a little about what you are looking for and I will be in touch.">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devin Robins | Real Broker, LLC</title>
 <style>
-/* ==============================================================
-   1. YOUR SETTINGS
-   Change these and the whole page changes.
-   Everything below this block uses these values.
-   ============================================================== */
-:root {
-  --brand:      #2F4F45;   /* main color: headings, buttons */
-  --brand-dark: #22392F;   /* darker version, used on hover */
-  --text:       #23211E;   /* body text */
-  --text-soft:  #6B655C;   /* lighter text, labels, fine print */
-  --bg:         #FDFCF9;   /* page background */
-  --panel:      #F5F2EA;   /* form background */
-  --line:       #E2DDD1;   /* borders */
+  :root{
+    --navy:#152238;
+    --navy-2:#1f3357;
+    --gold:#c8a24b;
+    --gold-dark:#a8842f;
+    --ink:#1c2532;
+    --muted:#6b7385;
+    --line:#e4e7ee;
+    --bg:#f4f5f8;
+    --white:#ffffff;
+    --error:#c0392b;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  .page{max-width:640px;margin:0 auto;padding:0 0 48px;}
 
-  --font-heading: Georgia, 'Times New Roman', serif;
-  --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  /* Hero */
+  .hero{
+    background:linear-gradient(150deg,var(--navy) 0%,var(--navy-2) 100%);
+    color:var(--white);
+    padding:52px 24px 64px;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:12px;
+    font-weight:600;
+    color:var(--gold);
+    margin:0 0 14px;
+  }
+  .hero h1{
+    font-size:30px;
+    line-height:1.25;
+    margin:0 0 12px;
+    font-weight:700;
+  }
+  .hero p.sub{
+    font-size:15.5px;
+    color:#cfd6e4;
+    max-width:440px;
+    margin:0 auto;
+  }
+  .hero .badge{
+    display:inline-block;
+    margin-top:16px;
+    padding:6px 14px;
+    border:1px solid rgba(200,162,75,0.5);
+    border-radius:999px;
+    font-size:12px;
+    font-weight:600;
+    color:var(--gold);
+    background:rgba(200,162,75,0.1);
+  }
 
-  --radius: 6px;           /* how rounded corners are. 0 for square */
-  --max-width: 620px;      /* how wide the page content gets */
-}
+  /* Card */
+  .card{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:0 12px 32px rgba(21,34,56,0.14);
+    margin:-40px 20px 0;
+    padding:28px 24px 32px;
+    position:relative;
+  }
+  @media(min-width:480px){
+    .card{padding:34px 36px 38px;}
+  }
 
-/* ==============================================================
-   2. STYLING
-   You can ignore this section. Claude can change it for you.
-   ============================================================== */
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-.wrap {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 48px 22px 64px;
-}
-.eyebrow {
-  font-size: .72rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-  font-weight: 700;
-  margin: 0 0 10px;
-}
-h1 {
-  font-family: var(--font-heading);
-  font-size: clamp(1.9rem, 5vw, 2.6rem);
-  line-height: 1.2;
-  font-weight: 500;
-  margin: 0 0 14px;
-  color: var(--brand);
-}
-.sub {
-  font-size: 1.05rem;
-  color: var(--text-soft);
-  margin: 0 0 34px;
-  max-width: 46ch;
-}
-form {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 26px 22px;
-}
-label {
-  display: block;
-  font-size: .78rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--text-soft);
-  margin: 0 0 6px;
-}
-.field { margin-bottom: 18px; }
-input, select, textarea {
-  width: 100%;
-  padding: 11px 13px;
-  font-family: inherit;
-  font-size: 1rem;
-  color: var(--text);
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-input:focus, select:focus, textarea:focus {
-  outline: 2px solid var(--brand);
-  outline-offset: 1px;
-  border-color: var(--brand);
-}
-textarea { min-height: 88px; resize: vertical; }
-button {
-  width: 100%;
-  padding: 14px 18px;
-  font-family: inherit;
-  font-size: .95rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #fff;
-  background: var(--brand);
-  border: 0;
-  border-radius: var(--radius);
-  cursor: pointer;
-}
-button:hover { background: var(--brand-dark); }
-button[disabled] { opacity: .6; cursor: default; }
-.fineprint {
-  font-size: .82rem;
-  color: var(--text-soft);
-  margin: 14px 0 0;
-  text-align: center;
-}
-.done {
-  display: none;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 34px 24px;
-  text-align: center;
-}
-.done h2 {
-  font-family: var(--font-heading);
-  color: var(--brand);
-  margin: 0 0 8px;
-  font-weight: 500;
-}
-.done p { margin: 0; color: var(--text-soft); }
-.err {
-  display: none;
-  color: #8A2B2B;
-  font-size: .88rem;
-  margin: 12px 0 0;
-  text-align: center;
-}
-footer {
-  margin-top: 40px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-  font-size: .85rem;
-  color: var(--text-soft);
-  text-align: center;
-}
-footer a { color: var(--brand); }
+  fieldset{border:0;margin:0;padding:0;}
+  legend{padding:0;}
+
+  .field{margin-bottom:20px;}
+  .field label.field-label{
+    display:block;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .field .hint{
+    font-weight:400;
+    color:var(--muted);
+    font-size:12.5px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea{
+    width:100%;
+    font-size:16px;
+    font-family:inherit;
+    padding:13px 14px;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    background:#fbfbfd;
+    color:var(--ink);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  input:focus, textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    background:var(--white);
+  }
+  textarea{resize:vertical;min-height:80px;}
+
+  /* Pill / button-group choices */
+  .pill-group{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .pill-group input[type="radio"]{
+    position:absolute;
+    opacity:0;
+    width:1px;
+    height:1px;
+    pointer-events:none;
+  }
+  .pill-group label{
+    cursor:pointer;
+    padding:11px 16px;
+    border:1.5px solid var(--line);
+    border-radius:999px;
+    font-size:14.5px;
+    font-weight:600;
+    color:var(--navy);
+    background:#fbfbfd;
+    transition:all .15s ease;
+    user-select:none;
+  }
+  .pill-group label:hover{
+    border-color:var(--gold);
+  }
+  .pill-group input[type="radio"]:checked + label{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--white);
+    box-shadow:0 4px 10px rgba(200,162,75,0.35);
+  }
+  .pill-group input[type="radio"]:focus-visible + label{
+    outline:2px solid var(--navy-2);
+    outline-offset:2px;
+  }
+
+  /* Conditional buyer questions */
+  .buyer-extra{display:none;}
+  .buyer-extra.show{
+    display:block;
+    animation:fadeSlide .25s ease;
+  }
+  @keyframes fadeSlide{
+    from{opacity:0; transform:translateY(-4px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .submit-btn{
+    width:100%;
+    margin-top:6px;
+    padding:15px 18px;
+    border:none;
+    border-radius:10px;
+    background:var(--navy);
+    color:var(--white);
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.2px;
+    cursor:pointer;
+    transition:background .15s ease, transform .05s ease;
+  }
+  .submit-btn:hover{background:var(--navy-2);}
+  .submit-btn:active{transform:translateY(1px);}
+  .submit-btn:disabled{opacity:.6;cursor:default;}
+
+  .privacy-note{
+    font-size:12px;
+    color:var(--muted);
+    text-align:center;
+    margin-top:14px;
+  }
+
+  .form-msg{
+    display:none;
+    font-size:13.5px;
+    border-radius:8px;
+    padding:11px 13px;
+    margin-bottom:18px;
+  }
+  .form-msg.error{
+    display:block;
+    background:#fdecea;
+    color:var(--error);
+    border:1px solid #f5c6c0;
+  }
+
+  /* Success state */
+  .success-panel{
+    display:none;
+    text-align:center;
+    padding:20px 6px 4px;
+  }
+  .success-panel .check{
+    width:56px;height:56px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    background:#eaf6ee;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .success-panel h2{
+    font-size:20px;
+    margin:0 0 8px;
+  }
+  .success-panel p{
+    color:var(--muted);
+    font-size:14.5px;
+    margin:0;
+  }
+
+  /* honeypot */
+  .hp-field{
+    position:absolute;
+    left:-9999px;
+    top:-9999px;
+    height:0;
+    width:0;
+    overflow:hidden;
+  }
+
+  /* Footer / agent info */
+  .agent-footer{
+    margin:32px 20px 0;
+    text-align:center;
+  }
+  .agent-footer .name{
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .agent-footer .brokerage{
+    color:var(--muted);
+    font-size:13.5px;
+    margin-bottom:14px;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px 22px;
+    margin-bottom:14px;
+  }
+  .contact-row a{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:var(--navy);
+    text-decoration:none;
+    font-size:13.5px;
+    font-weight:600;
+  }
+  .contact-row a:hover{color:var(--gold-dark);}
+  .contact-row svg{flex:0 0 auto;}
+  .license-line{
+    font-size:11.5px;
+    color:var(--muted);
+    line-height:1.6;
+  }
 </style>
 </head>
-
 <body>
-<div class="wrap">
+  <div class="page">
 
-  <!-- ============================================================
-       3. YOUR HEADLINE
-       Change these three lines to sound like you.
-       ============================================================ -->
-  <p class="eyebrow">Your Name, Realtor</p>
-  <h1>Let's figure out your next move.</h1>
-  <p class="sub">Tell me a little about where you are at. Takes 60 seconds and there is no pressure on the other end of it.</p>
+    <header class="hero">
+      <p class="eyebrow">Real Broker, LLC</p>
+      <h1>Let's Find Your Next Move</h1>
+      <p class="sub">Share a few quick details and Devin Robins will follow up with you personally — no long forms, promise.</p>
+      <span class="badge">First-Time Home Buyer Specialist</span>
+    </header>
 
-  <!-- ============================================================
-       4. YOUR FORM
+    <main class="card">
 
-       IMPORTANT: replace YOUR_FORM_ID below with your own Formspree
-       ID. It is the part after /f/ in your Formspree endpoint.
+      <div class="form-msg error" id="formError">
+        Something went wrong sending your info. Please try again, or call/text
+        <a href="tel:8089876321" style="color:inherit;font-weight:700;">(808) 987-6321</a>.
+      </div>
 
-       Example: if Formspree gives you
-         https://formspree.io/f/abcd1234
-       then you want
-         action="https://formspree.io/f/abcd1234"
-       ============================================================ -->
-  <form id="leadform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form id="leadForm" action="https://formspree.io/f/xwledpnd" method="POST">
+        <input type="hidden" name="_subject" value="New Lead from Website">
+        <div class="hp-field" aria-hidden="true">
+          <label>Leave this field empty</label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
 
-    <div class="field">
-      <label for="name">Your name</label>
-      <input id="name" name="name" type="text" required>
-    </div>
+        <div class="field">
+          <label class="field-label" for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Full name" required autocomplete="name">
+        </div>
 
-    <div class="field">
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required>
-    </div>
+        <div class="field">
+          <label class="field-label" for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
 
-    <div class="field">
-      <label for="phone">Phone</label>
-      <input id="phone" name="phone" type="tel">
-    </div>
+        <div class="field">
+          <label class="field-label" for="phone">Phone Number <span class="hint">(optional)</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="(___) ___-____" autocomplete="tel">
+        </div>
 
-    <!-- Change these options to match the kinds of clients you want -->
-    <div class="field">
-      <label for="situation">What is going on?</label>
-      <select id="situation" name="situation">
-        <option>Thinking about selling</option>
-        <option>Looking to buy</option>
-        <option>Selling and buying at the same time</option>
-        <option>Moving to the area</option>
-        <option>Just gathering information</option>
-      </select>
-    </div>
+        <fieldset class="field">
+          <legend class="field-label">What are you looking to do?</legend>
+          <div class="pill-group" role="radiogroup" aria-label="What are you looking to do?">
+            <input type="radio" id="goal-buy" name="looking_for" value="Buy a Home" required>
+            <label for="goal-buy">Buy a Home</label>
 
-    <div class="field">
-      <label for="timeline">Timeline</label>
-      <select id="timeline" name="timeline">
-        <option>As soon as possible</option>
-        <option>1 to 3 months</option>
-        <option>3 to 6 months</option>
-        <option>Still just looking</option>
-      </select>
-    </div>
+            <input type="radio" id="goal-sell" name="looking_for" value="Sell a Home">
+            <label for="goal-sell">Sell a Home</label>
 
-    <div class="field">
-      <label for="message">Anything you want me to know</label>
-      <textarea id="message" name="message"></textarea>
-    </div>
+            <input type="radio" id="goal-both" name="looking_for" value="Buy &amp; Sell">
+            <label for="goal-both">Buy &amp; Sell</label>
 
-    <button type="submit" id="submitbtn">Send it over</button>
-    <p class="fineprint">I read every one of these myself.</p>
-    <p class="err" id="err">Something went wrong. Please try again, or text me instead.</p>
-  </form>
+            <input type="radio" id="goal-browse" name="looking_for" value="Just Browsing">
+            <label for="goal-browse">Just Browsing</label>
+          </div>
+        </fieldset>
 
-  <!-- Shows after they submit. Change this wording too. -->
-  <div class="done" id="done">
-    <h2>Got it, thank you.</h2>
-    <p>I will be in touch shortly.</p>
+        <div class="buyer-extra" id="buyerExtra">
+          <fieldset class="field">
+            <legend class="field-label">Have you owned a home before? <span class="hint">(optional)</span></legend>
+            <div class="pill-group" role="radiogroup" aria-label="Have you owned a home before?">
+              <input type="radio" id="ftb-yes" name="first_time_buyer" value="First-Time Buyer">
+              <label for="ftb-yes">First-Time Buyer</label>
+
+              <input type="radio" id="ftb-no" name="first_time_buyer" value="Owned Before">
+              <label for="ftb-no">Owned Before</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend class="field-label">Open to new construction? <span class="hint">(optional)</span></legend>
+            <div class="pill-group" role="radiogroup" aria-label="Open to new construction?">
+              <input type="radio" id="nc-yes" name="new_construction" value="Yes, Interested">
+              <label for="nc-yes">Yes</label>
+
+              <input type="radio" id="nc-no" name="new_construction" value="Prefer Existing">
+              <label for="nc-no">No</label>
+
+              <input type="radio" id="nc-maybe" name="new_construction" value="Not Sure Yet">
+              <label for="nc-maybe">Not Sure</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <fieldset class="field">
+          <legend class="field-label">What's your timeline?</legend>
+          <div class="pill-group" role="radiogroup" aria-label="What's your timeline?">
+            <input type="radio" id="time-asap" name="timeline" value="ASAP" required>
+            <label for="time-asap">ASAP</label>
+
+            <input type="radio" id="time-1-3" name="timeline" value="1-3 Months">
+            <label for="time-1-3">1–3 Months</label>
+
+            <input type="radio" id="time-3-6" name="timeline" value="3-6 Months">
+            <label for="time-3-6">3–6 Months</label>
+
+            <input type="radio" id="time-6-12" name="timeline" value="6-12 Months">
+            <label for="time-6-12">6–12 Months</label>
+
+            <input type="radio" id="time-exploring" name="timeline" value="Just Exploring">
+            <label for="time-exploring">Just Exploring</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label class="field-label" for="message">Anything else? <span class="hint">(optional)</span></label>
+          <textarea id="message" name="message" placeholder="e.g. neighborhoods you love, must-haves, budget range..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Send My Info</button>
+        <p class="privacy-note">Your information stays private and is only used to follow up with you.</p>
+      </form>
+
+      <div class="success-panel" id="successPanel">
+        <div class="check">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12.5L9.5 18L20 6" stroke="#2e9e51" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2>Thanks — got it!</h2>
+        <p>Devin Robins will be in touch with you shortly.</p>
+      </div>
+
+    </main>
+
+    <footer class="agent-footer">
+      <div class="name">Devin Robins</div>
+      <div class="brokerage">Real Broker, LLC</div>
+      <div class="contact-row">
+        <a href="tel:8089876321">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z" stroke="#152238" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          (808) 987-6321
+        </a>
+        <a href="mailto:devin.robins@theperry.group">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18v11a1 1 0 01-1 1H4a1 1 0 01-1-1v-11z" stroke="#152238" stroke-width="1.4" stroke-linejoin="round"/><path d="M3.5 6.8l8.5 6.7 8.5-6.7" stroke="#152238" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          devin.robins@theperry.group
+        </a>
+      </div>
+      <div class="license-line">License #14251576-SA00 &middot; Real Broker, LLC &middot; Equal Housing Opportunity</div>
+    </footer>
+
   </div>
 
-  <!-- ============================================================
-       5. YOUR FOOTER
-       Put your real phone number and license number here.
-       ============================================================ -->
-  <footer>
-    <p>
-      Your Name, Realtor<br>
-      The Perry Group, Real Broker LLC<br>
-      <a href="tel:8015551234">(801) 555-1234</a><br>
-      License #00000000-SA00
-    </p>
-  </footer>
+  <script>
+    (function(){
+      var form = document.getElementById('leadForm');
+      var submitBtn = document.getElementById('submitBtn');
+      var successPanel = document.getElementById('successPanel');
+      var errorMsg = document.getElementById('formError');
+      var buyerExtra = document.getElementById('buyerExtra');
 
-</div>
+      var lookingForRadios = document.querySelectorAll('input[name="looking_for"]');
+      function updateBuyerExtra(){
+        var selected = document.querySelector('input[name="looking_for"]:checked');
+        if (selected && selected.value !== 'Sell a Home') {
+          buyerExtra.classList.add('show');
+        } else {
+          buyerExtra.classList.remove('show');
+        }
+      }
+      for (var i = 0; i < lookingForRadios.length; i++) {
+        lookingForRadios[i].addEventListener('change', updateBuyerExtra);
+      }
 
-<script>
-/* ==============================================================
-   6. FORM HANDLING
-   This keeps people on your page after they submit instead of
-   sending them to a Formspree page. You do not need to change it.
-   ============================================================== */
-var form = document.getElementById('leadform');
-var btn  = document.getElementById('submitbtn');
-var done = document.getElementById('done');
-var err  = document.getElementById('err');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        errorMsg.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  err.style.display = 'none';
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
+        var data = new FormData(form);
 
-  fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(function (res) {
-    if (res.ok) {
-      form.style.display = 'none';
-      done.style.display = 'block';
-    } else {
-      throw new Error('bad response');
-    }
-  })
-  .catch(function () {
-    err.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Send it over';
-  });
-});
-</script>
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(response){
+          if (response.ok) {
+            form.style.display = 'none';
+            successPanel.style.display = 'block';
+          } else {
+            return response.json().then(function(json){
+              throw new Error((json && json.error) || 'Submission failed');
+            });
+          }
+        }).catch(function(){
+          errorMsg.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send My Info';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
